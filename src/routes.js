@@ -20,5 +20,6 @@ router.get('/foods', FoodController.index);
 router.post('/ingest', IngestedFoodController.create);
 router.get('/ingest', IngestedFoodController.index);
 router.get('/ingest/:user_id', IngestedFoodController.specificUserIngestions);
+router.delete('/ingest/:id', IngestedFoodController.delete);
 
 module.exports = router;

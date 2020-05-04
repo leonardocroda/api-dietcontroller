@@ -10,21 +10,23 @@ Para utilizar a API:
 
 2- Clone o repositório
 
-3- Instale as dependências através do comando 
+3- Copie o .env.example para um arquivo .env e preencha as constantes com os valores adequados
+
+4- Instale as dependências através do comando 
 
 ```
 npm install
 ```
 
-4- Crie um Banco de Dados e configure-o  no arquivo knexfile.js (caso não utilize o banco como development, modifique no arquivo database/connection, para se adequar às configurações)
+5- Crie um Banco de Dados e configure-o  no arquivo knexfile.js (caso não utilize o banco como development, modifique no arquivo database/connection, para se adequar às configurações)
 
-5- Execute as migrations através do comando 
+6- Execute as migrations através do comando 
 
 ```
 npx knex migrate:latest
 ```
 
-6- Execute a API através do comando 
+7- Execute a API através do comando 
 
 ```
 npm start
@@ -72,6 +74,7 @@ Lista todas as medidas de um usuário específico
 
 #### DELETE /measures/:id
 Apaga a medida com o id informado
+Deve conter um parâmetro Authorization no header contendo o Id do usuário associado à medida
 
 ### Foods:
 
@@ -106,4 +109,6 @@ Lista todas as ingestões
 #### GET /ingest/:user_id
 Retorna as ingestões de um usuário específico 
 
-#### DELETE 
+#### DELETE /ingest/:id
+Apaga uma ingestão
+Deve conter um parâmetro Authorization no header contendo o Id do usuário associado à ingestão

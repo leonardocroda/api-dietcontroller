@@ -19,4 +19,19 @@ module.exports = {
 
     },
 
+    async delete(req, res) {
+        const { id } = req.params;
+        const user_id = req.headers.authorization;
+
+        const ingested = await conn('ingested_foods').
+            where('id', id).
+            select('user_id').
+            first();
+
+        if (ingested.user_id != user_id) {
+            return res.status(401).json({ error: "Operation not permitted" });
+        }
+        await conn('ingested_foods').where('id', id).delete();
+        return res.status(204).send();
+    }
 };
